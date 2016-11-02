@@ -1,0 +1,148 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/analyse_audio/analyse_audio.cpp
+analyse_audio.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/analyse_audio/analyse_audio.h
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/analyse_audio/analyse_audio.h
+iostream
+-
+../define_serveur_client.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/define_serveur_client.h
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/audiostream/audiostream.cpp
+audiostream.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/audiostream/audiostream.h
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/audiostream/audiostream.h
+iostream
+-
+vector
+-
+queue
+-
+../define_serveur_client.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/define_serveur_client.h
+../decodeur_audio/decodeur_audio.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/decodeur_audio/decodeur_audio.h
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/decodeur_audio/decodeur_audio.cpp
+decodeur_audio.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/decodeur_audio/decodeur_audio.h
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/decodeur_audio/decodeur_audio.h
+../define_serveur_client.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/define_serveur_client.h
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/define_serveur_client.h
+opus/opus.h
+-
+SFML/Audio.hpp
+-
+SFML/Network.hpp
+-
+iostream
+-
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/encodeur_audio/encodeur_audio.cpp
+encodeur_audio.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/encodeur_audio/encodeur_audio.h
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/encodeur_audio/encodeur_audio.h
+../define_serveur_client.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/define_serveur_client.h
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/main.cpp
+iostream
+-
+audiostream/audiostream.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/audiostream/audiostream.h
+socket_serveur/serveur_udp.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/socket_serveur/serveur_udp.h
+socket_client/client_udp.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/socket_client/client_udp.h
+define_serveur_client.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/define_serveur_client.h
+ostream
+-
+array
+-
+queue
+-
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/socket_client/client_udp.cpp
+client_udp.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/socket_client/client_udp.h
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/socket_client/client_udp.h
+iostream
+-
+ostream
+-
+vector
+-
+array
+-
+../audiostream/audiostream.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/audiostream/audiostream.h
+../utils/utils.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/utils/utils.h
+../define_serveur_client.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/define_serveur_client.h
+../decodeur_audio/decodeur_audio.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/decodeur_audio/decodeur_audio.h
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/socket_serveur/serveur_udp.cpp
+serveur_udp.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/socket_serveur/serveur_udp.h
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/socket_serveur/serveur_udp.h
+iostream
+-
+list
+-
+array
+-
+../socket_client/client_udp.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/socket_client/client_udp.h
+../audiostream/audiostream.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/audiostream/audiostream.h
+../utils/utils.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/utils/utils.h
+../analyse_audio/analyse_audio.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/analyse_audio/analyse_audio.h
+../define_serveur_client.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/define_serveur_client.h
+../encodeur_audio/encodeur_audio.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/encodeur_audio/encodeur_audio.h
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/utils/utils.cpp
+utils.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/utils/utils.h
+iomanip
+-
+math.h
+-
+windows.h
+-
+sys/ioctl.h
+-
+unistd.h
+-
+cstring
+-
+
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/utils/utils.h
+SFML/System.hpp
+-
+SFML/Network.hpp
+-
+iostream
+-
+

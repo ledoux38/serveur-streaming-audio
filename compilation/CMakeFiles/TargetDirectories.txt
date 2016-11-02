@@ -1,0 +1,3 @@
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/compilation/CMakeFiles/edit_cache.dir
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/compilation/CMakeFiles/rebuild_cache.dir
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/compilation/CMakeFiles/CLIENT_SERVEUR_UDP.dir

@@ -7,7 +7,7 @@
 
 socket_serveur::socket_serveur(void)
     : m_quitter(false)
-    ,m_analyse_audio("/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/projet_final_mentora/KariSigurdssonTwistofFate.wav")
+    ,m_analyse_audio(CHN_FICHIER_AUDIO)
     ,m_encodeur(0)
 {
     /////////////////////////////////////////////////////////////////////
