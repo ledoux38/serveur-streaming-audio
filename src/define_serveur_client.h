@@ -6,7 +6,7 @@
 #include<SFML/Network.hpp>
 #include<iostream>
 
-#define VERSION_PROJET 1
+#define VERSION_PROJET 2
 
 #define TABLE_SIZE 2500
 #define RESERVE_SAMPLE 2
@@ -20,7 +20,7 @@
 #define FREQUENCE_SAMPLE_OPUS 48000
 
 
-#define LOG(affichage) std::cout<<affichage<<std::endl
+#define LOG(commentaire,affichage) std::cout<<commentaire<<"::"<<affichage<<std::endl
 //#define FRAME_SIZE 960
 //#define BITRATE 64000
 //#define MAX_FRAME_SIZE 6*960

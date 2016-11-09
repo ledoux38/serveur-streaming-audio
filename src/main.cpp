@@ -122,7 +122,7 @@ int main(void)
 
 
     sf::InputSoundFile file;
-    if (!file.openFromFile("/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/projet_final_mentora/KariSigurdssonTwistofFate.wav"))
+    if (!file.openFromFile(CHN_FICHIER_AUDIO))
     {
         std::cout<<"erreur"<<std::endl;
     }
