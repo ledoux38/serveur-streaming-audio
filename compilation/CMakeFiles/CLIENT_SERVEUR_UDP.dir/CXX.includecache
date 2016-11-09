@@ -21,24 +21,16 @@ audiostream.h
 /home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/audiostream/audiostream.h
 
 /home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/audiostream/audiostream.h
+../define_serveur_client.h
+/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/define_serveur_client.h
 iostream
 -
 vector
 -
 queue
 -
-../define_serveur_client.h
-/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/define_serveur_client.h
 ../decodeur_audio/decodeur_audio.h
 /home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/decodeur_audio/decodeur_audio.h
-iostream
--
-vector
--
-queue
--
-../define_serveur_client.h
-/home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/define_serveur_client.h
 
 /home/ledoux/Qt_creator/projet/C++/progets/proj_mentora_terminal/version stable/serveur-streaming-audio/src/decodeur_audio/decodeur_audio.cpp
 decodeur_audio.h
