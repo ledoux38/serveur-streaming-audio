@@ -1,12 +1,14 @@
 
 #ifndef SOUNDSTREAM_H
 #define SOUNDSTREAM_H
-
+#include"../define_serveur_client.h"
 #include<iostream>
 #include<vector>
 #include<queue>
+#if(VERSION_PROJET==1 || VERSION_PROJET ==0)
 
-#include"../define_serveur_client.h"
+
+
 #include"../decodeur_audio/decodeur_audio.h"
 
 class audiostream : public sf::SoundStream
@@ -30,22 +32,9 @@ private:
     decodeur_audio*m_decodeur;
 
 };
+#endif
 
 #if(VERSION_PROJET == 2)
-
-
-#ifndef SOUNDSTREAM_H
-#define SOUNDSTREAM_H
-//#include<SFML/Audio.hpp>
-//#include<SFML/Network.hpp>
-
-
-
-#include<iostream>
-#include<vector>
-#include<queue>
-
-#include"../define_serveur_client.h"
 
 
 class audiostream : public sf::SoundStream
@@ -72,7 +61,6 @@ private:
 
 };
 
-#endif//SOUNDSTREAM_H
 
 
 #endif
