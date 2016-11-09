@@ -85,7 +85,7 @@ void socket_client::decodage_donnee(std::array< sf::Uint8,TAILLE_PACKET>tableau,
             std::vector<sf::Int16>echantillions(TAILLE_ABSOLU);
             taille_decode=m_decodeur->decodage_donnee_audio(&tableau_encode[0],tableau_encode.size(),&echantillions[0],0);
             echantillions.resize(taille_decode);
-            m_soundstream.load(echantillions);
+//            m_soundstream.load(echantillions);
 
 
 
