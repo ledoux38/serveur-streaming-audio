@@ -74,6 +74,32 @@ template<class T, size_t S> sf::Packet& operator >>(sf::Packet& pck, std::array<
     return pck;
 }
 
+template<class T> sf::Packet& operator <<(sf::Packet& pck, const std::vector<T>& arr)
+{
+    int taille(arr.size());
+    pck<<taille;
+        for(int i(0);i<arr.size();++i)
+        {
+            pck<<arr[i];
+        }
+
+    return pck;
+}
+
+template<class T> sf::Packet& operator >>(sf::Packet& pck, std::vector<T>& arr)
+{
+
+    T tmp;
+    int taille;
+    pck>>taille;
+    for(int i = 0; i <taille; ++i)
+    {
+        pck >> tmp;
+        arr.push_back(tmp);
+    }
+    return pck;
+}
+
 
 
 #endif // UTILS_H
