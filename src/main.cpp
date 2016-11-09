@@ -151,7 +151,7 @@ int main(void)
         lots_echantillion_encoder.resize(sortie_audio_encoder);
 
 
-//        stream.load(lots_echantillion_encoder);
+        stream.load(lots_echantillion_encoder);
 
 
 
