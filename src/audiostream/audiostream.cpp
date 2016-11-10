@@ -99,7 +99,7 @@ void audiostream::load(std::array< sf::Int16,TABLE_SIZE> tableau)
         std::vector<sf::Int16>echantillions(TAILLE_ABSOLU);
         taille_decode=opus_decode(m_decodeur,&tableau[0],tableau.size(),&echantillions[0],VARIABLE_ELEMENTAIRE,0);
         LOG("TAILLE_DECODE",taille_decode);
-        echantillions.resize(taille_decode);
+        echantillions.resize(taille_decode*CANAUX);
         m_echantillon.push(echantillions);
 
     }

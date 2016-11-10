@@ -18,7 +18,7 @@
 #define TAILLE_ABSOLU VARIABLE_ELEMENTAIRE*2/**sizeof(opus_int16)*/
 #define APPLICATION OPUS_APPLICATION_AUDIO
 #define FREQUENCE_SAMPLE_OPUS 48000
-
+#define CANAUX 2
 
 #define LOG(commentaire,affichage) std::cout<<commentaire<<"::"<<affichage<<std::endl
 //#define FRAME_SIZE 960
