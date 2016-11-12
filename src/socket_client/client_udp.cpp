@@ -35,14 +35,6 @@ void socket_client::reception()
         case Packet::pckType::RawData:
         {
 
-//                std::array< sf::Uint8,TAILLE_PACKET>tableau;
-//                opus_int32 taille_tableau_donnee;
-
-//                if(pck>>tableau && pck>>taille_tableau_donnee)
-//                {
-//                    decodage_donnee(tableau,taille_tableau_donnee);
-//                    //m_soundstream.load(tableau);
-//                }
             std::vector<sf::Uint8>tableau;
             pck>>tableau;
             decodage_donnee(tableau);
@@ -86,12 +78,6 @@ void socket_client::decodage_donnee(std::array< sf::Uint8,TAILLE_PACKET>tableau,
             std::vector<sf::Int16>echantillions(TAILLE_ABSOLU);
             taille_decode=m_decodeur->decodage_donnee_audio(&tableau_encode[0],tableau_encode.size(),&echantillions[0],0);
             echantillions.resize(taille_decode);
-//            m_soundstream.load(echantillions);
-
-
-
-
-
 }
 
 void socket_client::decodage_donnee(std::vector<sf::Uint8>tableau)
@@ -125,11 +111,7 @@ void socket_client::decodage_donnee(std::vector<sf::Uint8>tableau)
 
     void socket_client::emission()
     {
-        //    sf::Packet pck_emission;
-        //    sf::Int8 typage_packet(20);
 
-        //    pck_emission << typage_packet;
-        //    m_socket.send(pck_emission,m_adresse,m_port);
     }
 
     void socket_client::run_client(void)
@@ -189,8 +171,7 @@ void socket_client::decodage_donnee(std::vector<sf::Uint8>tableau)
             case 'q':
             case 'Q':
             {
-                //            std::cout<<"arret serveur"<<std::endl;
-                //            m_quitter = true;
+
             }
                 break;
 

@@ -5,7 +5,6 @@
 #include<iostream>
 #include<vector>
 #include<queue>
-#if(VERSION_PROJET==1 || VERSION_PROJET ==0)
 
 
 
@@ -32,38 +31,6 @@ private:
     decodeur_audio*m_decodeur;
 
 };
-#endif
-
-#if(VERSION_PROJET == 2)
-
-
-class audiostream : public sf::SoundStream
-{
-public:
-    audiostream();
-    void load(std::array< sf::Int16,TABLE_SIZE> tableau);
-    void load(std::vector<opus_uint8> tableau);
-    void reception_donnee_audio(sf::Packet);
-    void initialization(unsigned int canaux, unsigned int taux_echantillonnage);
-    void lecture_audio();
-protected:
-
-private:
-    virtual bool onGetData(Chunk &data);
-
-    virtual void onSeek(sf::Time);
-
-    std::queue<std::vector< sf::Int16>>m_echantillon;
-    std::size_t m_echantillon_en_cours;
-    bool m_initialiser;
-    int m_erreur;
-    OpusDecoder* m_decodeur;
-
-};
-
-
-
-#endif
 
 #endif//SOUNDSTREAM_H
 

@@ -21,9 +21,5 @@
 #define CANAUX 2
 
 #define LOG(commentaire,affichage) std::cout<<commentaire<<"::"<<affichage<<std::endl
-//#define FRAME_SIZE 960
-//#define BITRATE 64000
-//#define MAX_FRAME_SIZE 6*960
-//#define MAX_PACKET_SIZE (3*1276)
 
 #endif //DEFINE_SERVEUR_CLIENT_H

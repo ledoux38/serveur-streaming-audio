@@ -15,13 +15,18 @@ socket_serveur::socket_serveur(void)
     ///je connect le socket de mon serveur au selecteur
     /////////////////////////////////////////////////////////////////////
 
-
-    // if(m_socket.bind(sf::Socket::AnyPort) != sf::Socket::Done)
+#if(VERSION_PROJET ==0)
+    if(m_socket.bind(sf::Socket::AnyPort) != sf::Socket::Done)
+     {
+         std::cerr <<"erreur dans le lancement du serveur"<<std::endl;
+     }
+#else
     if(m_socket.bind(5000) != sf::Socket::Done)
 
     {
         std::cerr <<"erreur dans le lancement du serveur"<<std::endl;
     }
+#endif
     else
     {
         m_selecteur.add(m_socket);
@@ -302,11 +307,6 @@ void socket_serveur::transm_raw_data(void)
     opus_int32 taille_audio_encode(0);
     taille_audio_encode= m_encodeur->encodage_donnee_audio(lots_echantillions,VARIABLE_ELEMENTAIRE,&lots_echantillion_encoder[0],TAILLE_ABSOLU);
     lots_echantillion_encoder.resize(taille_audio_encode);
-//    std::array< sf::Uint8,TAILLE_PACKET> tableau_envoi_donnee;
-//    for(int i(0);i<tableau_envoi_donnee.size();i++)
-//    {
-//        tableau_envoi_donnee.at(i)= lots_echantillion_encoder[i];
-//    }
 
     Packet pck(Packet::pckType::RawData);
     pck<<lots_echantillion_encoder;
