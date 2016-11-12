@@ -42,14 +42,13 @@ bool audiostream::onGetData(Chunk &data)
              return true;
 
          }
-//LOG(this->getStatus())
-//         return false;
+
 }
 
 
-void audiostream::onSeek(sf::Time timeoffset)
+void audiostream::onSeek(sf::Time)
 {
-    //     m_echantillon_en_cours = static_cast<std::size_t>(timeoffset.asSeconds()+getSampleRate()*getChannelCount());
+
 }
 
 void audiostream::lecture_audio()
@@ -73,7 +72,7 @@ void audiostream::initialization(unsigned int canaux, unsigned int taux_echantil
 #if(VERSION_PROJET==2)
 audiostream::audiostream()
 {
-    m_decodeur=opus_decoder_create(FREQUENCE_SAMPLE_OPUS,2,&m_erreur);
+    m_decodeur=opus_decoder_create(FREQUENCE_SAMPLE_OPUS,CANAUX,&m_erreur);
 
 }
 
@@ -105,15 +104,13 @@ void audiostream::load(std::array< sf::Int16,TABLE_SIZE> tableau)
     }
 
 bool audiostream::onGetData(Chunk &data)
-{        //const int echantillion_du_flux = TABLE_SIZE;
-
+{
 
          if(m_echantillon.size()>=RESERVE_SAMPLE)
          {
 
              m_echantillon.pop();
              data.samples = &m_echantillon.front()[0];
-            //data.sampleCount = TABLE_SIZE;
              LOG("sampleCount",m_echantillon.front().size());
             data.sampleCount = m_echantillon.front().size();
              return true;
@@ -122,9 +119,9 @@ bool audiostream::onGetData(Chunk &data)
 }
 
 
-void audiostream::onSeek(sf::Time timeoffset)
+void audiostream::onSeek(sf::Time)
 {
-    //     m_echantillon_en_cours = static_cast<std::size_t>(timeoffset.asSeconds()+getSampleRate()*getChannelCount());
+
 }
 
 void audiostream::lecture_audio()

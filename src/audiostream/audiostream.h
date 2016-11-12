@@ -24,7 +24,7 @@ protected:
 private:
     virtual bool onGetData(Chunk &data);
 
-    virtual void onSeek(sf::Time timeoffset);
+    virtual void onSeek(sf::Time);
 
     std::queue<std::vector< sf::Int16>>m_echantillon;
     std::size_t m_echantillon_en_cours;
@@ -51,7 +51,7 @@ protected:
 private:
     virtual bool onGetData(Chunk &data);
 
-    virtual void onSeek(sf::Time timeoffset);
+    virtual void onSeek(sf::Time);
 
     std::queue<std::vector< sf::Int16>>m_echantillon;
     std::size_t m_echantillon_en_cours;
