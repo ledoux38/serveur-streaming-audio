@@ -51,6 +51,7 @@ public:
 
     void decodage_donnee(std::array< sf::Uint8,TAILLE_PACKET>tableau,opus_int32 taille_tableau_donnee);
 
+    void decodage_donnee(std::vector<sf::Uint8>tableau);
 protected:
 
 private:

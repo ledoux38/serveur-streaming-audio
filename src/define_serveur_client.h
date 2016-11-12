@@ -6,7 +6,7 @@
 #include<SFML/Network.hpp>
 #include<iostream>
 
-#define VERSION_PROJET 2
+#define VERSION_PROJET 1
 
 #define TABLE_SIZE 2500
 #define RESERVE_SAMPLE 2

@@ -35,16 +35,17 @@ void socket_client::reception()
         case Packet::pckType::RawData:
         {
 
-                std::array< sf::Uint8,TAILLE_PACKET>tableau;
-                opus_int32 taille_tableau_donnee;
+//                std::array< sf::Uint8,TAILLE_PACKET>tableau;
+//                opus_int32 taille_tableau_donnee;
 
-                if(pck>>tableau && pck>>taille_tableau_donnee)
-                {
-                    decodage_donnee(tableau,taille_tableau_donnee);
-                    //m_soundstream.load(tableau);
-                }
-
-
+//                if(pck>>tableau && pck>>taille_tableau_donnee)
+//                {
+//                    decodage_donnee(tableau,taille_tableau_donnee);
+//                    //m_soundstream.load(tableau);
+//                }
+            std::vector<sf::Uint8>tableau;
+            pck>>tableau;
+            decodage_donnee(tableau);
 
         }
             break;
@@ -91,6 +92,15 @@ void socket_client::decodage_donnee(std::array< sf::Uint8,TAILLE_PACKET>tableau,
 
 
 
+}
+
+void socket_client::decodage_donnee(std::vector<sf::Uint8>tableau)
+{
+    int taille_decode(0);
+    std::vector<sf::Int16>echantillions(TAILLE_ABSOLU);
+    taille_decode=m_decodeur->decodage_donnee_audio(&tableau[0],tableau.size(),&echantillions[0],0);
+    echantillions.resize(taille_decode*CANAUX);
+    m_soundstream.load(echantillions);
 }
 
     sf::IpAddress socket_client::get_adresse() const

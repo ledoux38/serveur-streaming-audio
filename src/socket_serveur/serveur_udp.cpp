@@ -301,15 +301,15 @@ void socket_serveur::transm_raw_data(void)
     std::vector<unsigned char>lots_echantillion_encoder(TAILLE_ABSOLU);
     opus_int32 taille_audio_encode(0);
     taille_audio_encode= m_encodeur->encodage_donnee_audio(lots_echantillions,VARIABLE_ELEMENTAIRE,&lots_echantillion_encoder[0],TAILLE_ABSOLU);
-
-    std::array< sf::Uint8,TAILLE_PACKET> tableau_envoi_donnee;
-    for(int i(0);i<tableau_envoi_donnee.size();i++)
-    {
-        tableau_envoi_donnee.at(i)= lots_echantillion_encoder[i];
-    }
+    lots_echantillion_encoder.resize(taille_audio_encode);
+//    std::array< sf::Uint8,TAILLE_PACKET> tableau_envoi_donnee;
+//    for(int i(0);i<tableau_envoi_donnee.size();i++)
+//    {
+//        tableau_envoi_donnee.at(i)= lots_echantillion_encoder[i];
+//    }
 
     Packet pck(Packet::pckType::RawData);
-    pck<<tableau_envoi_donnee<<taille_audio_encode;
+    pck<<lots_echantillion_encoder;
     envoyer_a_tous(pck);
 }
 
