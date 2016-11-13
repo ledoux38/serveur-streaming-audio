@@ -1,7 +1,7 @@
 #include "client_udp.h"
 
 socket_client::socket_client(sf::IpAddress adresse,unsigned short port)
-    : m_adresse(adresse), m_port(port),m_play(false),m_decodeur(0)
+    : m_adresse(adresse), m_port(port),m_play(false),m_decodeur(nullptr)
 {
     m_decodeur=new decodeur_audio();
 

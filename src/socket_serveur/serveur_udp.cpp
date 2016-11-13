@@ -8,7 +8,7 @@
 socket_serveur::socket_serveur(void)
     : m_quitter(false)
     ,m_analyse_audio(CHN_FICHIER_AUDIO)
-    ,m_encodeur(0)
+    ,m_encodeur(nullptr)
 {
     /////////////////////////////////////////////////////////////////////
     ///je cree mon serveur (aquisition du port gerer par l'OS)
@@ -243,7 +243,7 @@ bool  socket_serveur::list_client(socket_client* client)
     /// (SINON)-> je renvoie false
     ///////////////////////////////////////////////////////////////////////////////////////
 
-    socket_client* list_client (0);
+    socket_client* list_client (nullptr);
     for(std::list<socket_client*>::iterator it = m_clients.begin();it != m_clients.end();++it)
     {
         list_client = *it;
@@ -376,7 +376,7 @@ void  socket_serveur::verif_recep_socket(void)
     sf::IpAddress ip;
     unsigned short prt;
 
-    socket_client* list_client (0);
+    socket_client* list_client (nullptr);
     for(std::list<socket_client*>::iterator it = m_clients.begin();it != m_clients.end();++it)
     {
         list_client = *it;
