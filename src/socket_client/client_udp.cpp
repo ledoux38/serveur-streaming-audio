@@ -183,6 +183,22 @@ void socket_client::decodage_donnee(std::vector<sf::Uint8>tableau)
 
     }
 
+    void socket_client::set_compteur_pong(void)
+    {
+        m_compteur_pong++;
+    }
+
+
+    void socket_client::reset_compteur_pong(void)
+    {
+        m_compteur_pong = 0;
+    }
+
+    int socket_client::get_compteur_pong(void)
+    {
+        return m_compteur_pong;
+    }
+
     std::ostream &operator <<(std::ostream &flux, socket_client &client)
     {
         flux<<"adresse ip: " << client.get_adresse().toString()<< "  port:" << client.get_port() << std::endl;

@@ -20,6 +20,9 @@
 #define FREQUENCE_SAMPLE_OPUS 48000
 #define CANAUX 2
 
+#define COMPTEUR_PACKET 6
+#define COMPTEUR_PONG_MAXIMUM 3
+
 #define LOG(commentaire,affichage) std::cout<<commentaire<<"::"<<affichage<<std::endl
 
 #endif //DEFINE_SERVEUR_CLIENT_H

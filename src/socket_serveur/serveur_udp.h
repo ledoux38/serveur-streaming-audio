@@ -70,7 +70,7 @@ public:
     void commande_serveur(void);
 
 
-
+    socket_client& find_client(sf::IpAddress const &adresse,unsigned short const& port);
 protected:
 
     void new_connect_client(void);
@@ -94,6 +94,8 @@ private:
     bool m_quitter;
     analyse_audio m_analyse_audio;
     encodeur_audio*m_encodeur;
+    int m_compteur_envoi;
+    int m_numero_client;
 };
 
 #endif //SERVEUR_UDP_H

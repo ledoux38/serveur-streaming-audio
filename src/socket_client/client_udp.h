@@ -52,6 +52,13 @@ public:
     void decodage_donnee(std::array< sf::Uint8,TAILLE_PACKET>tableau,opus_int32 taille_tableau_donnee);
 
     void decodage_donnee(std::vector<sf::Uint8>tableau);
+
+    void reset_compteur_pong(void);
+
+    void set_compteur_pong(void);
+
+    int get_compteur_pong(void);
+
 protected:
 
 private:
@@ -61,6 +68,7 @@ private:
     audiostream m_soundstream;
     bool m_play;
     decodeur_audio* m_decodeur;
+    int m_compteur_pong;
 
 };
 

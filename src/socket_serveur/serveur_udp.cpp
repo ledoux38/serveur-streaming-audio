@@ -84,13 +84,28 @@ void socket_serveur::run_serveur(void)
         }
         else
         {
-            //std::cout<<"envoyer a tous"<< std::endl;
-            transm_raw_data();
+            if(m_compteur_envoi < COMPTEUR_PACKET)
+            {
+
+                transm_raw_data();
+            }
+            else
+            {
+                socket_client* client (nullptr);
+                if(m_numero_client<m_clients.size())
+                {
+                    for(std::list<socket_client*>::iterator it = m_clients.begin();it != m_clients.end();++it)
+                    {
+                        client = *it;
+                        transm_ping(client);
+                    }
+                }
+
+                m_numero_client =0;
+                m_compteur_envoi =0;
+            }
         }
-
     }
-
-
 }
 
 
@@ -129,7 +144,8 @@ void  socket_serveur::gestionnaire_reception_donnee(void)
         case Packet::pckType::Pong:
         {
 
-            std::cout<<"pong"<<std::endl;
+            find_client(adresse,port).reset_compteur_pong();
+            LOG("client",find_client(adresse,port).get_compteur_pong());
 
         }
             break;
@@ -156,14 +172,45 @@ void  socket_serveur::envoyer_a_tous(Packet &pck)
     /// elle envoi à chaque client du serveur le packet par une boucle for
     ///////////////////////////////////////////////////////////////////////////////
 
-    for(std::list<socket_client*>::iterator it = m_clients.begin();it != m_clients.end();++it)
+    if(m_clients.size() != 0)
     {
-        socket_client&client = **it;
-        m_socket.send(pck,client.get_adresse(),client.get_port());
+
+        for(std::list<socket_client*>::iterator it = m_clients.begin();it != m_clients.end();++it)
+        {
+            socket_client&client = **it;
+
+            if(client.get_compteur_pong()>=COMPTEUR_PONG_MAXIMUM)
+            {
+                delete *it;
+                m_clients.erase(it);
+                std::cout<<"suppression client"<<std::endl;
+                return;
+            }
+            else
+            {
+                m_socket.send(pck,client.get_adresse(),client.get_port());
+
+            }
+
+        }
+        m_compteur_envoi++;
     }
 }
 
+socket_client& socket_serveur::find_client(sf::IpAddress const &adresse,unsigned short const& port)
+{
+    socket_client* client (0);
+    for(std::list<socket_client*>::iterator it = m_clients.begin();it != m_clients.end();++it)
+    {
+        client = *it;
+        if(client->get_adresse() ==adresse && client->get_port() == port)
+        {
+            return *client;
+        }
 
+    }
+
+}
 
 //////////////////////////////////////////////////////////////////////////////////
 ///                         PROTEGER
@@ -269,6 +316,7 @@ void  socket_serveur::transm_ping (socket_client* client)
 
     Packet pck(Packet::pckType::Ping);
     m_socket.send(pck,client->get_adresse(),client->get_port());
+    client->set_compteur_pong();
 }
 
 
