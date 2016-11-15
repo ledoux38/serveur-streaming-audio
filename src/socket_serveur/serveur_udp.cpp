@@ -5,7 +5,7 @@
 ///                CONSTRUCTEUR/DESTRUCTEUR
 //////////////////////////////////////////////////////////////////////////////////
 
-socket_serveur::socket_serveur(void): m_quitter(false),m_analyse_audio(CHN_FICHIER_AUDIO),m_encodeur(nullptr)
+socket_serveur::socket_serveur(void): m_quitter(false),m_analyse_audio(CHN_FICHIER_AUDIO),m_encodeur(nullptr),m_compteur_envoi(0),m_numero_client(0)
 {
     /////////////////////////////////////////////////////////////////////
     ///je cree mon serveur (aquisition du port gerer par l'OS)
