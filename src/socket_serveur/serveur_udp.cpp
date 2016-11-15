@@ -143,16 +143,19 @@ void  socket_serveur::gestionnaire_reception_donnee(void)
             break;
         case Packet::pckType::Pong:
         {
-
-            find_client(adresse,port).reset_compteur_pong();
-            LOG("client",find_client(adresse,port).get_compteur_pong());
+            std::list<socket_client*>::iterator it;
+            it = find_object (m_clients.begin(), m_clients.end(), socket_client(adresse,port));
+            if (it != m_clients.end())
+                (*it)->reset_compteur_pong();
+              else
+                std::cerr << "Element no found in the list"<<std::endl;
 
         }
             break;
 
         default:
         {
-            std::cout<<"erreur typage inconnu"<<std::endl;
+
         }
             break;
 
@@ -197,20 +200,6 @@ void  socket_serveur::envoyer_a_tous(Packet &pck)
     }
 }
 
-socket_client& socket_serveur::find_client(sf::IpAddress const &adresse,unsigned short const& port)
-{
-    socket_client* client (0);
-    for(std::list<socket_client*>::iterator it = m_clients.begin();it != m_clients.end();++it)
-    {
-        client = *it;
-        if(client->get_adresse() ==adresse && client->get_port() == port)
-        {
-            return *client;
-        }
-
-    }
-
-}
 
 //////////////////////////////////////////////////////////////////////////////////
 ///                         PROTEGER

@@ -69,8 +69,6 @@ public:
     /////////////////////////////////////////////////////////////////
     void commande_serveur(void);
 
-
-    socket_client& find_client(sf::IpAddress const &adresse,unsigned short const& port);
 protected:
 
     void new_connect_client(void);

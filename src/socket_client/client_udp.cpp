@@ -58,7 +58,7 @@ void socket_client::reception()
 
         default:
         {
-            std::cout<<"erreur typage inconnu"<<std::endl;
+
         }
             break;
         }
