@@ -67,18 +67,6 @@ void socket_client::reception()
 
 
 }
-void socket_client::decodage_donnee(std::array< sf::Uint8,TAILLE_PACKET>tableau,opus_int32 taille_tableau_donnee)
-{
-    std::vector<sf::Uint8>tableau_encode(taille_tableau_donnee);
-    for(int i(0);i<taille_tableau_donnee;++i)
-    {
-        tableau_encode[i]=tableau[i];
-    }
-            int taille_decode(0);
-            std::vector<sf::Int16>echantillions(TAILLE_ABSOLU);
-            taille_decode=m_decodeur->decodage_donnee_audio(&tableau_encode[0],tableau_encode.size(),&echantillions[0],0);
-            echantillions.resize(taille_decode);
-}
 
 void socket_client::decodage_donnee(std::vector<sf::Uint8>tableau)
 {
@@ -109,19 +97,12 @@ void socket_client::decodage_donnee(std::vector<sf::Uint8>tableau)
         return(m_adresse == bdd_client.m_adresse && m_port == bdd_client.m_port);
     }
 
-    void socket_client::emission()
-    {
-
-    }
-
     void socket_client::run_client(void)
     {
         while (true)
         {
             reception();
         }
-
-
     }
 
     bool operator ==(socket_client const & nouveau_client, socket_client const & BDD_client)
