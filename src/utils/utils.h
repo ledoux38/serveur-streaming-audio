@@ -100,6 +100,17 @@ template<class T> sf::Packet& operator >>(sf::Packet& pck, std::vector<T>& arr)
     return pck;
 }
 
+// equivalent a find(algorithm) mais pour des tableaux de pointeur
+  template<class InputIterator, class T>
+    InputIterator find_exemple2 (InputIterator first, InputIterator last, const T& val)
+  {
+    while (first!=last) {
+      if (**first==val)
+          return first;
+      ++first;
+    }
+    return last;
+  }
 
 
 #endif // UTILS_H
