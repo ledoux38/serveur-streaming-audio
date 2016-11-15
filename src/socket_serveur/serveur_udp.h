@@ -2,10 +2,9 @@
 #define SERVEUR_UDP_H
 
 /////////////////////////////////////////////////////////////////
-//HEADERS
+///HEADERS
 /////////////////////////////////////////////////////////////////
-//#include <SFML/Network.hpp>
-//#include <SFML/System.hpp>
+
 
 
 #include <iostream>
@@ -79,11 +78,7 @@ protected:
 
     void transm_raw_data(void);
 
-    void verif_recep_socket(void);
-
     void ajouter_client(const sf::IpAddress &adresse, const unsigned short &port);
-
-    bool list_client(socket_client* client);
 
 private:
     std :: list <socket_client *> m_clients;

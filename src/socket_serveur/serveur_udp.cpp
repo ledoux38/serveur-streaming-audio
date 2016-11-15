@@ -5,10 +5,7 @@
 ///                CONSTRUCTEUR/DESTRUCTEUR
 //////////////////////////////////////////////////////////////////////////////////
 
-socket_serveur::socket_serveur(void)
-    : m_quitter(false)
-    ,m_analyse_audio(CHN_FICHIER_AUDIO)
-    ,m_encodeur(nullptr)
+socket_serveur::socket_serveur(void): m_quitter(false),m_analyse_audio(CHN_FICHIER_AUDIO),m_encodeur(nullptr)
 {
     /////////////////////////////////////////////////////////////////////
     ///je cree mon serveur (aquisition du port gerer par l'OS)
@@ -39,7 +36,6 @@ socket_serveur::socket_serveur(void)
 }
 
 
-
 socket_serveur::~socket_serveur()
 {
     for(std::list<socket_client*>::iterator it = m_clients.begin();it != m_clients.end();++it)
@@ -48,7 +44,6 @@ socket_serveur::~socket_serveur()
 
     }
 }
-
 
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -108,7 +103,6 @@ void socket_serveur::run_serveur(void)
 }
 
 
-
 void  socket_serveur::gestionnaire_reception_donnee(void)
 {
 
@@ -157,14 +151,12 @@ void  socket_serveur::gestionnaire_reception_donnee(void)
 
         }
             break;
-
         }
 
         pck.clear();
         std::cout<<"fin"<<std::endl;
     }
 }
-
 
 
 void  socket_serveur::envoyer_a_tous(Packet &pck)
@@ -202,7 +194,6 @@ void  socket_serveur::envoyer_a_tous(Packet &pck)
 //////////////////////////////////////////////////////////////////////////////////
 
 
-
 void  socket_serveur::ajouter_client(sf::IpAddress const &adresse, const unsigned short &port)
 {
     ///////////////////////////////////////////////////
@@ -216,42 +207,6 @@ void  socket_serveur::ajouter_client(sf::IpAddress const &adresse, const unsigne
 
     std::cout<<"ajout client:"<< *client <<std::endl;
 }
-
-
-
-bool  socket_serveur::list_client(socket_client* client)
-{
-    ///////////////////////////////////////////////////////////////////////////////////////
-    ///je verifie sur tous les socket de la list si le client et pas deja repertorié
-    ///    (SI)-> le client et deja repertorié
-    ///        -> je renvoie true
-    /// (SINON)-> je renvoie false
-    ///////////////////////////////////////////////////////////////////////////////////////
-
-    socket_client* list_client (nullptr);
-    for(std::list<socket_client*>::iterator it = m_clients.begin();it != m_clients.end();++it)
-    {
-        list_client = *it;
-        if(*client == *list_client)
-        {
-            std::cout<<"client deja connu"<<std::endl;
-            return true;
-        }
-
-        else
-        {
-            std::cout<<"client inconnu du serveur"<<std::endl;
-            return false;
-        }
-
-    }
-    ///////////////////////////////////////////////////////////////////////
-    /// si m_client different de zero je verifie dans la list
-    /// si le client et deja connu je renvoi true
-    /// si au bout de la liste je ne l'ai pas trouvé je renvoi false
-    ///////////////////////////////////////////////////////////////////////
-}
-
 
 
 void  socket_serveur::commande_serveur(void)
@@ -292,7 +247,6 @@ void  socket_serveur::commande_serveur(void)
 }
 
 
-
 void  socket_serveur::transm_ping (socket_client* client)
 {
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -303,7 +257,6 @@ void  socket_serveur::transm_ping (socket_client* client)
     m_socket.send(pck,client->get_adresse(),client->get_port());
     client->set_compteur_pong();
 }
-
 
 
 void socket_serveur::transm_init_data_sound (sf::IpAddress adresse_client, unsigned short port_client)
@@ -320,7 +273,6 @@ void socket_serveur::transm_init_data_sound (sf::IpAddress adresse_client, unsig
     pck<<m_analyse_audio.get_fichier_sound().getChannelCount()<<m_analyse_audio.get_fichier_sound().getSampleRate();
     m_socket.send(pck,adresse_client,port_client);
 }
-
 
 
 void socket_serveur::transm_raw_data(void)
@@ -345,31 +297,3 @@ void socket_serveur::transm_raw_data(void)
     pck<<lots_echantillion_encoder;
     envoyer_a_tous(pck);
 }
-
-
-
-void  socket_serveur::verif_recep_socket(void)
-{
-    /////////////////////////////////////////////////////////////////////////////
-    /// je verifie si chaque socket de la list et pret à recevoir des données
-    ///  et je traite les packet reçu
-    ////////////////////////////////////////////////////////////////////////////
-
-
-
-    sf::Packet pck;
-    sf::IpAddress ip;
-    unsigned short prt;
-
-    socket_client* list_client (nullptr);
-    for(std::list<socket_client*>::iterator it = m_clients.begin();it != m_clients.end();++it)
-    {
-        list_client = *it;
-        if(m_selecteur.isReady(list_client->get_socket()))
-        {
-            list_client->get_socket().receive(pck,ip,prt);
-        }
-    }
-
-}
-
