@@ -91,13 +91,12 @@ void socket_serveur::run_serveur(void)
             }
             else
             {
-                socket_client* client (nullptr);
                 if(m_numero_client<m_clients.size())
                 {
                     for(std::list<socket_client*>::iterator it = m_clients.begin();it != m_clients.end();++it)
                     {
-                        client = *it;
-                        transm_ping(client);
+
+                        transm_ping(*it);
                     }
                 }
 
@@ -180,9 +179,7 @@ void  socket_serveur::envoyer_a_tous(Packet &pck)
 
         for(std::list<socket_client*>::iterator it = m_clients.begin();it != m_clients.end();++it)
         {
-            socket_client&client = **it;
-
-            if(client.get_compteur_pong()>=COMPTEUR_PONG_MAXIMUM)
+            if((*it)->get_compteur_pong()>=COMPTEUR_PONG_MAXIMUM)
             {
                 delete *it;
                 m_clients.erase(it);
@@ -191,8 +188,7 @@ void  socket_serveur::envoyer_a_tous(Packet &pck)
             }
             else
             {
-                m_socket.send(pck,client.get_adresse(),client.get_port());
-
+                m_socket.send(pck,(*it)->get_adresse(),(*it)->get_port());
             }
 
         }
