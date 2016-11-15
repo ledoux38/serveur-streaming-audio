@@ -70,11 +70,6 @@ void socket_serveur::run_serveur(void)
                 std::cout<<"reception de donnee"<< std::endl;
                 gestionnaire_reception_donnee();
             }
-            else
-            {
-                std::cout<<"verif client selecteur"<< std::endl;
-                verif_recep_socket();
-            }
 
         }
         else
