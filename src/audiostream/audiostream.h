@@ -14,10 +14,8 @@ class audiostream : public sf::SoundStream
 {
 public:
     audiostream();
-    void load(std::array< sf::Int16,TABLE_SIZE> tableau);
     void load(std::vector<sf::Int16> &tableau);
     void initialization(unsigned int canaux, unsigned int taux_echantillonnage);
-    void lecture_audio();
 protected:
 
 private:
