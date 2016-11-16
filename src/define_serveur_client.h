@@ -7,6 +7,7 @@
 #include<iostream>
 
 #define VERSION_PROJET 1
+#define SOUS_VERSION 0
 
 #define TABLE_SIZE 2500
 #define RESERVE_SAMPLE 2

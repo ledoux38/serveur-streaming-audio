@@ -61,6 +61,7 @@ void socket_serveur::run_serveur(void)
     ///         (SINON)->je verifie les sockets de la base de donnée
     ///   (SINON)-> je continu à envoyer des donnée aux autres socket de la base de donnée
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
+  #if(SOUS_VERSION == 0)
     while (!m_quitter)
     {
         if(m_selecteur.wait(TEMPS_SELECTEUR))
@@ -96,7 +97,50 @@ void socket_serveur::run_serveur(void)
         }
     }
 }
+#endif
 
+#if(SOUS_VERSION == 1)
+
+while (!m_quitter)
+{
+    if(m_selecteur.wait(TEMPS_SELECTEUR))
+    {
+        if(m_selecteur.isReady(m_socket))
+        {
+            std::cout<<"reception de donnee"<< std::endl;
+            gestionnaire_reception_donnee();
+        }
+    }
+    else
+    {
+        if(m_clients.size() != 0)
+        {
+            if(m_compteur_envoi < COMPTEUR_PACKET)
+            {
+                transm_raw_data();
+            }
+            else
+            {
+                std::list<socket_client*>::iterator it = m_clients.begin();
+                int cpt(0);
+                while (cpt!=m_numero_client)
+                {
+                    ++it;
+                    ++cpt;
+                }
+                transm_ping(*it);
+
+                if(m_numero_client==m_clients.size()-1)
+                    m_numero_client =0;
+                else
+                    m_numero_client++;
+                m_compteur_envoi =0;
+            }
+        }
+    }
+}
+}
+#endif
 
 void  socket_serveur::gestionnaire_reception_donnee(void)
 {
@@ -153,7 +197,7 @@ void  socket_serveur::gestionnaire_reception_donnee(void)
     }
 }
 
-
+#if(SOUS_VERSION == 0)
 void  socket_serveur::envoyer_a_tous(Packet &pck)
 {
     ///////////////////////////////////////////////////////////////////////////////
@@ -182,7 +226,42 @@ void  socket_serveur::envoyer_a_tous(Packet &pck)
         m_compteur_envoi++;
     }
 }
+#endif
 
+#if(SOUS_VERSION == 1)
+void  socket_serveur::envoyer_a_tous(Packet &pck)
+{
+    ///////////////////////////////////////////////////////////////////////////////
+    /// cette fonction envoi un packet de type RawData
+    /// elle envoi à chaque client du serveur le packet par une boucle for
+    ///////////////////////////////////////////////////////////////////////////////
+
+    std::list<socket_client*>::iterator it = m_clients.begin();
+    while (it!=m_clients.end())
+    {
+        if((*it)->get_compteur_pong()>=COMPTEUR_PONG_MAXIMUM)
+        {
+            delete (*it);
+            m_clients.erase(it);
+            std::cout<<"suppression client"<<std::endl;
+            // return;
+        }
+        else
+        {
+            m_socket.send(pck,(*it)->get_adresse(),(*it)->get_port());
+            COUT("transmission audio");
+        }
+        if(m_clients.size()!=0)
+            it++;
+        else
+            break;
+    }
+    m_compteur_envoi++;
+
+}
+
+
+#endif
 
 //////////////////////////////////////////////////////////////////////////////////
 ///                         PROTEGER
