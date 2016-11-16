@@ -40,7 +40,7 @@ socket_serveur::~socket_serveur()
 {
     for(std::list<socket_client*>::iterator it = m_clients.begin();it != m_clients.end();++it)
     {
-        delete *it;
+        delete (*it);
 
     }
 }
@@ -168,7 +168,7 @@ void  socket_serveur::envoyer_a_tous(Packet &pck)
         {
             if((*it)->get_compteur_pong()>=COMPTEUR_PONG_MAXIMUM)
             {
-                delete *it;
+                delete (*it);
                 m_clients.erase(it);
                 std::cout<<"suppression client"<<std::endl;
                 return;
